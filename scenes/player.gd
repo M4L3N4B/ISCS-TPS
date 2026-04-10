@@ -3,7 +3,9 @@ extends CharacterBody3D
 
 const SPEED = 5.0
 const JUMP_VELOCITY = 4.5
+@onready var anim = $GodotCharacterSprite/AnimationPlayer
 
+var is_moving: bool = false
 
 func _physics_process(delta: float) -> void:
 	# Gravity
@@ -21,8 +23,18 @@ func _physics_process(delta: float) -> void:
 		if direction:
 			velocity.x = direction.x * SPEED
 			velocity.z = direction.z * SPEED
+			is_moving = true
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 			velocity.z = move_toward(velocity.z, 0, SPEED)
+			is_moving = false
 
+	# Animation
+	if is_on_floor() and is_moving:
+		if anim.current_animation != "2HandAimWalk":
+			anim.play("2HandAimWalk")
+	else:
+		if anim.current_animation != "2HandAim":
+			anim.play("2HandAim")
+		
 	move_and_slide()

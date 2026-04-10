@@ -22,7 +22,7 @@ script = ExtResource("1_g2els")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6322067, 0)
 shape = SubResource("CapsuleShape3D_u8vuu")
 
-[node name="GodotRobot3rdPersonShooterFinal" parent="." unique_id=658040653 instance=ExtResource("1_3vyb7")]
+[node name="GodotCharacterSprite" parent="." unique_id=658040653 instance=ExtResource("1_3vyb7")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
 [node name="CameraSystem" type="Node3D" parent="." unique_id=1535561156 node_paths=PackedStringArray("character")]

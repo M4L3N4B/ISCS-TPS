@@ -22,11 +22,17 @@ func _input(event: InputEvent) -> void:
 		Input.set_mouse_mode( Input.MOUSE_MODE_CAPTURED )
 		get_viewport().set_input_as_handled() # Don't allow other actions
 	
-	# Only allow a captured mouse to move
-	if event is InputEventMouseMotion:
-		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+	# Only allow game movements with a captured mouse
+	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+		if event is InputEventMouseMotion:
 			var mouse_event: Vector2 = event.screen_relative * mouse_sensitivity
 			move_field_of_vision(mouse_event)
+				
+		if event.is_action_pressed("aim"):
+			pass
+		
+		if event.is_action_released("aim"):
+			pass
 
 
 func move_field_of_vision(mouse_movement: Vector2) -> void:
