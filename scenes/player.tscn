@@ -1,18 +1,21 @@
 [gd_scene format=3 uid="uid://c61i6x6x7ki2a"]
 
 [ext_resource type="PackedScene" uid="uid://b2quk1h5x061g" path="res://scenes/sprite_scenes/GodotRobot3rdPersonShooterFinal.glb" id="1_3vyb7"]
+[ext_resource type="Script" uid="uid://ceiecqqfapxf1" path="res://scenes/player.gd" id="1_g2els"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_u8vuu"]
 radius = 0.5180664
 height = 3.1965332
 
 [node name="Player" type="CharacterBody3D" unique_id=697849929]
+script = ExtResource("1_g2els")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1772780930]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6071212, 0)
 shape = SubResource("CapsuleShape3D_u8vuu")
 
 [node name="GodotRobot3rdPersonShooterFinal" parent="." unique_id=658040653 instance=ExtResource("1_3vyb7")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1893657784]
-transform = Transform3D(-1, 2.262668e-08, -8.444392e-08, 0, 0.9659258, 0.25881904, 8.742278e-08, 0.25881904, -0.9659258, -0.829, 3.5, -3)
+transform = Transform3D(1, 0, 0, 0, 0.9659258, 0.25881904, 0, -0.25881904, 0.9659258, 0.829, 3.5, 3)
