@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://dah1jyqkwpj1e"]
+
+[ext_resource type="PackedScene" uid="uid://b2quk1h5x061g" path="res://scenes/GodotRobot3rdPersonShooterFinal.glb" id="1_6pmjc"]
+
+[node name="Field" type="Node3D" unique_id=589869024]
+
+[node name="GodotRobot3rdPersonShooterFinal" parent="." unique_id=430622102 instance=ExtResource("1_6pmjc")]
+
+[node name="Camera3D" type="Camera3D" parent="GodotRobot3rdPersonShooterFinal" unique_id=1830685348]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.7001764, 2.2510002, -1.7158133)
