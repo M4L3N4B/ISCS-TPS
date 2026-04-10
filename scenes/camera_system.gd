@@ -5,11 +5,10 @@ extends Node3D
 
 var camera_rotation: Vector2 = Vector2.ZERO
 var mouse_sensitivity: float = 0.005 # Must be set very low
-var max_y_rotation_rads: float = 0.8 # Limits up-down rotation
+var max_y_rotation_rads: float = 1 # Limits up-down rotation
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
-	camera_rotation.x = -15.0
 	Input.set_mouse_mode( Input.MOUSE_MODE_CAPTURED )
 
 
