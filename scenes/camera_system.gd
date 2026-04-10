@@ -17,8 +17,8 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		Input.set_mouse_mode( Input.MOUSE_MODE_VISIBLE )
 	
-	# Show mouse by clicking on the screen
-	if event is InputEventMouseButton:
+	# Show mouse by left-clicking on the screen
+	if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 		Input.set_mouse_mode( Input.MOUSE_MODE_CAPTURED )
 		get_viewport().set_input_as_handled() # Don't allow other actions
 	
