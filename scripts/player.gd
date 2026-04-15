@@ -60,17 +60,21 @@ func _shoot(delta: float):
 		get_parent().add_child(instance)
 
 		var screen_center = get_viewport().get_visible_rect().size / 2
-		var ray_origin = camera.project_ray_origin(screen_center)
-		var ray_dir = camera.project_ray_normal(screen_center)
-		var ray_end = ray_origin + ray_dir * 1000.0
+		var ray_start = camera.project_ray_origin(screen_center)
+		var ray_direction = camera.project_ray_normal(screen_center)
+		var ray_end = ray_start + ray_direction * 1000.0
 
 		var space_state = get_world_3d().direct_space_state
-		var query = PhysicsRayQueryParameters3D.create(ray_origin, ray_end)
+		var query = PhysicsRayQueryParameters3D.create(ray_start, ray_end)
 		query.exclude = [self]
 		var hit = space_state.intersect_ray(query)
 		var target_point = hit["position"] if hit else ray_end
 
 		var direction = (target_point - gun_position.global_position).normalized()
+		
+		var result: Dictionary = space_state.intersect_ray(query)
+		
+		print(result)	# Debug
 
 		instance.velocity = direction * instance.SPEED
 		
