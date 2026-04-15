@@ -7,6 +7,12 @@ var camera_rotation: Vector2 = Vector2.ZERO
 var mouse_sensitivity: float = 0.005 # Must be set very low
 var max_y_rotation_rads: float = 1 # Limits up-down rotation
 
+@export var normal_view: float = 70.0
+@export var closer_view: float = 35.0
+@export var aim_speed: float = 7.0
+
+@onready var camera: Camera3D = $SideSpringArm/BackSpringArm/Camera3D
+var target_view: float = normal_view
 
 func _ready() -> void:
 	Input.set_mouse_mode( Input.MOUSE_MODE_CAPTURED )
@@ -29,11 +35,10 @@ func _input(event: InputEvent) -> void:
 			move_field_of_vision(mouse_event)
 				
 		if event.is_action_pressed("aim"):
-			pass
+			target_view = closer_view
 		
 		if event.is_action_released("aim"):
-			pass
-
+			target_view = normal_view
 
 func move_field_of_vision(mouse_movement: Vector2) -> void:
 	# Reset previous movement
@@ -45,3 +50,6 @@ func move_field_of_vision(mouse_movement: Vector2) -> void:
 	
 	character.rotate_object_local( Vector3(0, 1, 0), -camera_rotation.x )
 	rotate_object_local( Vector3(1, 0, 0), -camera_rotation.y )
+
+func _process(delta: float) -> void:
+	camera.fov = lerp(camera.fov, target_view, aim_speed * delta)
